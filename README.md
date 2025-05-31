@@ -23,45 +23,44 @@ python umlchecker.py <filename.jpg>
 ## Sample output
 ```
 === Insights Extracted ===
-Okay, let's evaluate the student-submitted ERD.
+Okay, here's an evaluation of the ERD based on the provided rubric, along with a detailed explanation and suggestions for improvement.
 
-**Overall Assessment:** C (72%)
+**Overall Score: 8/16**
 
-**Detailed Explanation:**
+**Detailed Evaluation:**
 
-**Strengths:**
+**1. Structural Clarity (Score: 3/4)**
 
-*   **Basic Representation:** The diagram attempts to represent a system related to a library or bookstore (based on the entities present). It shows connections between entities like "Book", "Customer", and "Loan".
-*   **Use of Rectangles:** The student has used rectangles for entities which is correct notation.
-*   **Lines for Relationships:** The use of lines to represent relationships is a basic starting point, although the cardinality is not clearly defined.
+* **Strengths:** The diagram is reasonably organized and the basic shapes of entities and relationships are identifiable. The use of rectangles for entities and diamonds for relationships is a common and generally understandable notation.
+* **Weaknesses:** The layout feels a little cramped, with entities and relationships clustered together. The lines connecting them are sometimes too thin, making it difficult to visually parse the relationships. A clearer separation of entities would improve readability.
+* **Improvement:** Use more whitespace to separate entities and relationships.  Increase the line thickness to better define the connections. Consider using more defined delimiters (e.g., boxes around entities) to improve visual grouping.
 
-**Weaknesses & Issues (Based on the Rubric Expectations):**
+**2. Schema Completeness (Score: 2/4)**
 
-1.  **Inaccurate Representation:** The diagram lacks key components necessary for a complete and accurate representation of a library system. Specifically:
-    *   **Missing Entities:** Crucially, it’s missing entities like “Author,” “Category,” “Staff,” and “Reservation”.  A library system is far more complex than just “Book”, “Customer”, and “Loan”.
-    *   **Incomplete Relationships:** The relationships (lines) connecting entities don't represent the correct cardinality or multiplicity. For instance, it doesn't specify how many books a customer can loan, or how many authors can be associated with a single book. The lack of a ‘Borrowing’ entity and its associated attributes (e.g., due date, loan number) is a significant omission.
-    *   **Lack of Primary/Foreign Keys:** There are no indication of primary keys for the entities, or how they link to each other through foreign keys – this is fundamental for a relational database.
+* **Strengths:** The diagram attempts to represent the basic structure of a library system with books, authors, and members.
+* **Weaknesses:** It lacks key constraints. Specifically, it doesn't explicitly define primary keys for each entity (Book, Author, Member).  It’s unclear how books are linked to authors, and no relationship exists for loaning books. The diagram also doesn't represent the concept of "loans" themselves, which are a fundamental part of a library system.
+* **Improvement:**  Explicitly define primary keys (e.g., BookID, AuthorID, MemberID).  Add a relationship representing the "borrowing" process - specifically a “Loan” entity with attributes like LoanDate, ReturnDate, and BookID.
 
-2.  **Incorrect Notation:**
-    *   **Cardinality Ambiguity:** As mentioned above, the lines connecting the entities are ambiguous.  They need to clearly show 1:1, 1:many, or many-to-many relationships.
-    *   **Missing Symbols:**  The diagram doesn't use symbols to indicate primary keys or foreign keys, which are standard practice in ERDs.
 
-3.  **Lack of Clarity & Completeness:**
-    *   **Missing Attributes:** The entities lack attributes. For example, “Book” should have attributes like Title, ISBN, Publication Year, and potentially Genre. “Customer” needs attributes like CustomerID, Name, Address, etc.
-    *   **Unclear Labels:** While the entity names are generally clear, a more descriptive label for the lines connecting entities would improve understanding.
+**3. Semantic Accuracy (Score: 3/4)**
 
-**Specific Actionable Improvements:**
+* **Strengths:** The mapping of entities – books to authors, members to books - is logically sound, reflecting the basic functionality of a library.
+* **Weaknesses:** The diagram lacks normalization. Specifically, the Author table might contain redundant data (Author Name, Author Biography) that could be centralized. The diagram doesn't address potential issues such as multiple copies of the same book.
+* **Improvement:** Implement a basic level of normalization.  Consider introducing an “ISBN” attribute in the Book entity to uniquely identify each book.  The addition of a "Loan" entity will increase the accuracy of the modeling.
 
-1.  **Add Missing Entities:** Incorporate the missing entities: “Author,” “Category,” “Staff”, and “Reservation”.
-2.  **Define Cardinality:**  Clearly indicate the cardinality of each relationship using standard notations (e.g., crows feet).  For instance, a “Book” can be associated with one or many “Authors”.  A “Customer” can place one or many “Loans”.
-3.  **Include Attributes:** Add relevant attributes to each entity (e.g., Title, ISBN, Publication Year for “Book”; CustomerID, Name, Address for “Customer”).
-4.  **Define Primary Keys:** Explicitly designate primary keys for each entity (e.g., BookID for “Book,” CustomerID for “Customer”).
-5.  **Add Foreign Keys:**  Establish foreign key relationships to link entities, demonstrating how data is related.
-6. **Use Standard Notation:** Use proper conventions for primary and foreign key representation.
+**4. Notational Consistency (Score: 2/4)**
 
-**Justification for Grade (C):**
+* **Strengths:** The use of basic notation (rectangles, diamonds) is consistent.
+* **Weaknesses:** There's some inconsistency in the use of labels. Some labels are brief (e.g., "Member"), while others are more descriptive ("MemberID"). The line styles and colors used to represent different relationship types could be more uniform.
+* **Improvement:** Establish a consistent naming convention for all entities and attributes. Use a single style for lines representing different relationship types (e.g., solid lines for one-to-many, dashed lines for many-to-many).
 
-The student has taken a basic first step towards representing a database. However, significant errors in representation, notation, and completeness prevent a higher grade. The diagram lacks the necessary components for a functional database design, and the ambiguous relationships make it difficult to understand. The inclusion of the suggested improvements would significantly enhance the diagram’s quality and accuracy.
+
+
+**Summary and Recommendations:**
+
+The diagram demonstrates a basic understanding of ERD principles, but it needs significant refinement to become a robust and accurate model. Focusing on adding key constraints, normalizing the model, and improving notational consistency will substantially increase the diagram’s quality and value. Specifically, adding the 'Loan' entity and defining primary keys are critical first steps.  Improving the layout and line styles would further enhance its readability and professional appearance.
+
+With improvements, a score of 12/16 would be a reasonable target.
 ````
 
 ## For improvement
