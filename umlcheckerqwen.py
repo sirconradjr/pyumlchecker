@@ -3,7 +3,7 @@ import requests
 import sys
 
 OLLAMA_ENDPOINT = "http://localhost:11434/api/generate"
-MODEL_NAME = "gemma3:4b"
+MODEL_NAME = "qwen2.5vl:7b"
 
 def encode_image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
@@ -54,6 +54,7 @@ def query_gemma3_vision(image_path, prompt=\
     4. Provide a detailed explanation of the strengths and weaknesses in each category.\n\
     5. Suggest specific, actionable improvements to enhance the diagram’s quality.\n"):
 
+    
     image_base64 = encode_image_to_base64(image_path)
 
     payload = {
@@ -81,6 +82,3 @@ if __name__ == "__main__":
     insights = query_gemma3_vision(image_path)
     print("=== Insights Extracted ===")
     print(insights)
-
-
- 
